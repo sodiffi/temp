@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+    <title>練德文 </title>
+</head>
+<style>
+    @font-face {
+        font-family: a;
+        src: url(a.ttf);
+    }
+
+    * {
+        color: #00334e;
+        font-family: a;
+    }
+
+    #q,
+    #a {
+        font-size: 35px;
+    }
+
+    #a {
+        height: 50px;
+    }
+
+    button {
+        border-radius: 10px;
+        background: #007fbd;
+        border: 0;
+        padding: 3px;
+        color: #dbebfa;
+        margin: 20px 0;
+        font-size: 20px;
+    }
+
+    .container {
+        background: #dbebfa;
+        width: 40%;
+        margin: 15vh auto;
+        text-align: center;
+        border-radius: 10px;
+        height: 400px;
+    }
+
+    @media screen and (max-width: 800px) {
+        .container {
+            width: 80%;
+            margin: 15vh auto;
+            height: 300px;
+        }
+    }
+</style>
+
+<body>
+    <div>
+        <div class="container">
+           
+            <div class="row justify-content-center">
+                <div class="col-auto "> <button id="before">上一題</button></div>
+                <div class="col-auto"><button id="show">解答</button></div>
+                <div class="col-auto"> <button id="next">下一題</button></div>
+            </div>
+            <div class="row">
+                <div class="col-sm">
+                   
+                    <p id="q" class="justify-content-center" />
+                    <p id="a" class="justify-content-center" />
+                </div>
+            </div>
+            <html>
+
+            <head>
+                <meta charset="utf-8" />
+            </head>
+
+            <body>
+               
+                <!-- <button onclick="playAudio('audio1', document.getElementById('text').value);">播放</button> -->
+            </body>
+
+            </html>
+        </div>
+    </div>
+    <script src=" https://code.jquery.com/jquery-3.5.1.slim.min.js "
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj "
+        crossorigin="anonymous "></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js "
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx "
+        crossorigin="anonymous "></script>
+    <script>
+        const data = [{'d':'danke','c':'謝謝'},{'d':'das Wasser','c':'水'},{'d':'das Wasser','c':'水'},{'d':'der Kaffee','c':'咖啡'},{'d':'der Tee','c':'茶'},{'d':'die Adresse','c':'地址'},{'d':'die Telefonnummer','c':'電話號碼'},{'d':'gut','c':'好'},{'d':'besser','c':'好'},{'d':'jemand','c':'某(個)人'},{'d':'möchten','c':'想要'},{'d':'nehmen','c':'拿、取'},{'d':'von','c':'從、由'},{'d':'wie','c':'如何'},{'d':'zeichnen','c':'畫'},{'d':'ganz','c':'整個、全部'},{'d':'ansehen','c':'(靠近)看'},{'d':'der Zucker','c':'糖'},{'d':'die Milch','c':'牛奶'},{'d':'schwarz','c':'黑色的'},{'d':'viel','c':'很多'},{'d':'gern(e)','c':'好的'},{'d':'ja','c':'是'},{'d':'nur','c':'只(要)'},{'d':'Ja-Nein-Frage','c':'是/否-問句'},{'d':'die Tafel','c':'(黑/白)板'},{'d':'kennen','c':'認識、知道'},{'d':'der Lehrer','c':'教師'},{'d':'die Lehrerin','c':'女教師'},{'d':'die Cafeteria','c':'自助餐廳'},{'d':'zu','c':'在(限定用法)(在家)'},{'d':'das Au-pair-Mädchen','c':'不支薪的年輕保母'},{'d':'frei','c':'空'},{'d':'hier','c':'這裡'},{'d':'markieren','c':'標記'},{'d':'als','c':'作為'},{'d':'arbeiten','c':'工作'},{'d':'die Übung','c':'練習'},{'d':'selbst','c':'自己'},{'d':'das Kärtchen','c':'小卡片'},{'d':'bis','c':'直到'},{'d':'die Zahl','c':'數字'},{'d':'notieren','c':'作筆記'},{'d':'mitsprechen','c':'跟別人憶起說'},{'d':'das Handy','c':'手機'},{'d':'die Handynummer','c':'手機號碼'},{'d':'die Vorwahl','c':'區域碼'},{'d':'das Telefon','c':'電話'},{'d':'die E-Mail','c':'電子郵件'},{'d':'die E-Main-Adresse','c':'電子郵件地址'},{'d':'die Postleitzahl','c':'郵遞區號'},{'d':'dauern','c':'需時'},{'d':'die Stunde','c':'小時'},{'d':'jetzt','c':'現在'},{'d':'müde','c':'累(了)'},{'d':'noch','c':'還(要)'},{'d':'schon','c':'已經'},{'d':'die Kasse','c':'收銀台'},{'d':'das Bild','c':'照片'},{'d':'das Tablett','c':'托盤'},{'d':'der Cent','c':'分'},{'d':'der Euro','c':'歐元'},{'d':'wie viel','c':'多少錢'},{'d':'das Getränk','c':'飲料'},{'d':'der Cappuccino','c':'卡布奇諾'},{'d':'die Uhryeit','c':'時鐘時間'},{'d':'wiedersehen','c':'再見'},{'d':'am','c':'在'},{'d':'anrufen','c':'打電話'},{'d':'aus sein','c':'沒電了'},{'d':'da sein','c':'在那裏'},{'d':'das Wochenende','c':'周末'},{'d':'der Bus','c':'公車'},{'d':'der ICE','c':'特快公車'},{'d':'der Moment','c':'瞬間'},{'d':'die Nachrichten','c':'新聞'},{'d':'die Nummer','c':'號碼'},{'d':'erreichen','c':'連絡上'},{'d':'fahren','c':'(車子)開'},{'d':'können','c':'能夠、可以'},{'d':'mobil','c':'隨時隨地'},{'d':'nicht','c':'不是'},{'d':'um','c':'在'},{'d':'unter','c':'在…之下'}]
+
+
+        var arr = [];
+        for (var i = 0; i < data.length; i++) { //一個從0到100的陣列
+            arr.push(i);
+        }
+        arr.sort(function () { //隨機打亂這個陣列
+            return Math.random() - 0.5;
+        })
+        console.log(arr)
+
+        function playAudio(text) {
+            var audio = document.getElementById("audio1"); // 取得 audio 控制項
+            var s = "http://translate.google.com/translate_tts?client=tw-ob&q=" + text + "&tl=de"
+            console.log(s)
+            var q=$("#q")
+            q.empty();
+            var content=`<audio controls src="${s}"> </audio>`
+            q.append(content)            
+        }
+
+        function change(pre) {
+            console.log("enter ")
+            console.log(data[arr[now]].d) 
+
+            check = true
+            if (pre > 0 && (now + pre) >= data.length) {
+                now = 0
+            } else if (pre < 0 && now - pre < 0) {
+                now = data.length
+            } else {
+                now += pre
+            }
+            $("#a").text("")
+            
+            playAudio(data[arr[now]].d)
+            
+
+
+        }
+        window.onload = function () {
+            change(0)
+        }
+        var now = 1
+        $("#show").click(function () {
+            $("#a").html(data[arr[now]].d + "<br>" + data[arr[now]].c)
+        });
+        $("#next").click(function () {
+            change(1)
+        });
+        $("#before").click(function () {
+            change(-1)
+        });
+        document.addEventListener('keydown', logKey);
+
+        function logKey(e) {
+            switch (e.key) {
+                case "ArrowLeft":
+                    change(-1)
+                    break;
+                case "ArrowRight":
+                    change(1)
+                    break;
+                case "ArrowUp":
+                case "ArrowDown":
+                    $("#a").text(data[arr[now]].d + "<br>" + data[arr[now]].c)
+                    break;
+                default:
+                    break;
+            }
+        }
+    </script>
+
+</body>
+
+</html>
